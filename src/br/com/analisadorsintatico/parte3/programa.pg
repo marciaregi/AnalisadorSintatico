@@ -9,6 +9,6 @@ package br.com.analisadorsintatico.parte3;
  *
  * @author Regina
  */
-public class Parser {
+public class programa {
     
 }
