@@ -13,6 +13,7 @@ import java.io.File;
  */
 public class Gerador {
      public static void main(String[] args) {
+         
         //Criação de objeto do arquivo com regras de produção para análise
         File file = new File("C:/Users/Regina/Documents/NetBeansProjects/AnalisadorSintatico/src/br/com/analisadorsintatico/parte3/Regras.flex");
        
