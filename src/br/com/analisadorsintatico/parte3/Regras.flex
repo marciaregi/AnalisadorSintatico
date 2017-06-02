@@ -69,4 +69,4 @@ BRANCO              = [\t\f]
 {BRANCO}                {return new Symbol(Sym.BRANCO);}
 {LINHA}                 {return new Symbol(Sym.LINHA);}
 {ATRIBUICAO}            {return new Symbol(Sym.ATRIBUICAO);}
-.                       {return new Symbol(Sym.ERROR);}
+[^] { throw new Error("Illegal character: "+yytext()+" at line "+(yyline+1)+", column "+(yycolumn+1) ); }
