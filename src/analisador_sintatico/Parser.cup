@@ -28,13 +28,23 @@ terminal    ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
             CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_IF, 
             FIM_COMANDO, RESERVADO_ELSE,RESERVADO_WHILE,
             FIM_LINHA, PARENTESES_INICIO, PARENTESES_FIM, 
-            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
+            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO, ERROR;
 
 non terminal    if ,if_else, while, tipo_declaracao,  
                 expressao_relacional, expressao,  op_relacional, op_atribuicao, 
                 tipo_atribuicao, expressao_atribuicao,
-                op_logico, expressao_aritmetica, tipo_generico;
+                op_logico, expressao_aritmetica, tipo_generico, id_ou_numero;
 
+
+
+if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
+
+if_else             ::=     if |
+                            if RESERVADO_ELSE CHAVE_INICIO expressao CHAVE_FIM;
+
+while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
+
+id_ou_numero        ::=     ID|NUMEROS_NATURAIS|NUMEROS_REAIS;
 
 tipo_declaracao     ::=     tipo_generico ID;
 
@@ -44,51 +54,24 @@ op_relacional       ::=     OPERADOR_RELACIONAL;
 
 op_atribuicao       ::=     ATRIBUICAO;
 
-while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
-
-if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
-
-if_else             ::=     if | if RESERVADO_ELSE CHAVE_INICIO expressao CHAVE_FIM;
-
 op_logico           ::=     expressao_relacional | 
                             expressao_relacional OPERADOR_LOGICO op_logico |
                             expressao_relacional OPERADOR_LOGICO;
 
 tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
-                            tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA |
-                            tipo_declaracao ATRIBUICAO NUMEROS_REAIS FIM_LINHA |
-                            tipo_declaracao ATRIBUICAO ID FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO id_ou_numero FIM_LINHA |
                             tipo_declaracao ATRIBUICAO TEXTO FIM_LINHA;
                             
 expressao           ::=     tipo_atribuicao |
                             while |
                             if_else |
-                            expressao_atribuicao |
-                            expressao;
+                            expressao_atribuicao;
 
-expressao_relacional ::=    ID op_relacional ID |
-                            ID op_relacional NUMEROS_NATURAIS | 
-                            ID op_relacional NUMEROS_REAIS | 
-                            NUMEROS_NATURAIS op_relacional ID | 
-                            NUMEROS_REAIS op_relacional ID | 
-                            NUMEROS_NATURAIS op_relacional NUMEROS_NATURAIS |
-                            NUMEROS_REAIS op_relacional NUMEROS_REAIS |
-                            NUMEROS_REAIS op_relacional NUMEROS_NATURAIS |
-                            NUMEROS_NATURAIS op_relacional NUMEROS_REAIS |
+expressao_relacional ::=    id_ou_numero op_relacional id_ou_numero |
                             TEXTO op_relacional TEXTO;
 
-expressao_atribuicao ::=    ID op_atribuicao ID FIM_LINHA | 
-                            ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA | 
-                            ID op_atribuicao NUMEROS_REAIS FIM_LINHA |
-                            ID op_atribuicao TEXTO FIM_LINHA |
-                            ID op_atribuicao expressao_aritmetica FIM_LINHA;
+expressao_atribuicao ::=    id_ou_numero op_atribuicao id_ou_numero FIM_LINHA | 
+                            id_ou_numero op_atribuicao expressao_aritmetica FIM_LINHA;
 
-expressao_aritmetica ::=    ID OPERADOR_ARITMETICO ID |
-                            ID OPERADOR_ARITMETICO NUMEROS_NATURAIS |
-                            ID OPERADOR_ARITMETICO NUMEROS_REAIS
-                            NUMEROS_NATURAIS OPERADOR_ARITMETICO ID |
-                            NUMEROS_REAIS OPERADOR_ARITMETICO ID |
-                            NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS |
-                            NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS |
-                            OPERADOR_ARITMETICO expressao_aritmetica;
+expressao_aritmetica ::=    id_ou_numero OPERADOR_ARITMETICO id_ou_numero;
 
