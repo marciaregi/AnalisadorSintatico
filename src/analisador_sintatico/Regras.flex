@@ -57,8 +57,8 @@ BRANCO              = [\t \f \n]
 {CHAVE_FIM}             {return new Symbol(sym.CHAVE_FIM, yychar, yyline, yytext());}
 {TEXTO}                 {return new Symbol(sym.TEXTO, yychar, yyline, yytext());}
 {ID}                    {return new Symbol(sym.ID, yychar, yyline, yytext());}
-{NUMEROS_NATURAIS}      {return new Symbol(sym.NUMERO_NATURAIS, yychar, yyline, yytext());}
-{NUMEROS_REIAS}         {return new Symbol(sym.NUMERO_REAIS, yychar, yyline, yytext());}
+{NUMEROS_NATURAIS}      {return new Symbol(sym.NUMEROS_NATURAIS, yychar, yyline, yytext());}
+{NUMEROS_REIAS}         {return new Symbol(sym.NUMEROS_REAIS, yychar, yyline, yytext());}
 {BRANCO}                { }
 {ATRIBUICAO}            {return new Symbol(sym.ATRIBUICAO, yychar, yyline, yytext());}
 . {return new Symbol (sym.ERROR, yychar, yyline, yytext());}

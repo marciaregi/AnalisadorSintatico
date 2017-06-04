@@ -14,6 +14,7 @@ public class sym {
   public static final int FIM_COMANDO = 13;
   public static final int OPERADOR_RELACIONAL = 7;
   public static final int FIM_LINHA = 16;
+  public static final int ERROR = 23;
   public static final int ID = 2;
   public static final int TIPO = 22;
   public static final int NUMEROS_NATURAIS = 4;
@@ -54,7 +55,8 @@ public class sym {
   "RESERVADO_INICIO",
   "RESERVADO_FIM",
   "TIPO_NUMERICO",
-  "TIPO"
+  "TIPO",
+  "ERROR"
   };
 }
 
