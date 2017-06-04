@@ -30,8 +30,8 @@ terminal    ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
             FIM_LINHA, INICIO_COMANDO, PARENTESES_INICIO, PARENTESES_FIM, 
             RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
 
-non terminal    if ,else, while, tipo_declaracao, tipo_atribuicao_numero, 
-                tipo_atribuicao_numero_reais, expressao_relacional, expressao, expressao_repete,
+non terminal    if ,if_else, while, tipo_declaracao, tipo_atribuicao_numero, 
+                tipo_atribuicao_numero_reais, expressao_relacional, expressao, 
                 op_relacional, op_atribuicao, tipo_atribuicao, numero_id, expressao_atribuicao,
                 op_logico;
 
@@ -48,20 +48,21 @@ while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTES
 
 if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
 
-else                ::=     if RESERVADO_ELSE CHAVE_INICIO expressao CHAVE_FIM;
+if_else             ::=     if | if RESERVADO_ELSE CHAVE_INICIO expressao CHAVE_FIM;
 
 op_logico           ::=     expressao_relacional | 
                             expressao_relacional OPERADOR_LOGICO op_logico |
                             expressao_relacional OPERADOR_LOGICO;
 
 tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
-                            tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS|NUMEROS_REAIS FIM_LINHA | 
+                            tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO NUMEROS_REAIS FIM_LINHA |
                             tipo_declaracao ATRIBUICAO ID FIM_LINHA;
 
-expressao           ::=     tipo_atribuicao expressao|
-                            while expressao |
-                            else expressao |
-                            expressao_atribuicao expressao |
+expressao           ::=     tipo_atribuicao |
+                            while |
+                            if_else |
+                            expressao_atribuicao |
                             expressao;
 
 expressao_relacional ::=    ID op_relacional ID |
