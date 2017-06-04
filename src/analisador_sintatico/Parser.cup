@@ -48,8 +48,7 @@ while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTES
 
 if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
 
-else                ::=     if | 
-                            if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
+else                ::=     if RESERVADO_ELSE CHAVE_INICIO expressao CHAVE_FIM;
 
 op_logico           ::=     expressao_relacional | 
                             expressao_relacional OPERADOR_LOGICO op_logico |
@@ -60,9 +59,9 @@ tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
                             tipo_declaracao ATRIBUICAO ID FIM_LINHA;
 
 expressao           ::=     tipo_atribuicao expressao|
-                            while expressao_repete |
-                            else expressao_repete |
-                            expressao_atribuicao expressao_repete |
+                            while expressao |
+                            else expressao |
+                            expressao_atribuicao expressao |
                             expressao;
 
 expressao_relacional ::=    ID op_relacional ID |

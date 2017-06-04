@@ -33,18 +33,18 @@ public class parser extends java_cup.runtime.lr_parser {
   /** Production table. */
   protected static final short _production_table[][] = 
     unpackFromStrings(new String[] {
-    "\000\045\000\002\005\004\000\002\002\004\000\002\007" +
+    "\000\044\000\002\005\004\000\002\002\004\000\002\007" +
     "\007\000\002\006\007\000\002\013\003\000\002\014\003" +
-    "\000\002\004\011\000\002\002\011\000\002\003\003\000" +
-    "\002\003\007\000\002\020\003\000\002\020\005\000\002" +
-    "\020\004\000\002\015\004\000\002\015\005\000\002\015" +
-    "\004\000\002\015\006\000\002\011\004\000\002\011\004" +
-    "\000\002\011\004\000\002\011\004\000\002\011\003\000" +
+    "\000\002\004\011\000\002\002\011\000\002\003\007\000" +
+    "\002\020\003\000\002\020\005\000\002\020\004\000\002" +
+    "\015\004\000\002\015\005\000\002\015\004\000\002\015" +
+    "\006\000\002\011\004\000\002\011\004\000\002\011\004" +
+    "\000\002\011\004\000\002\011\003\000\002\010\005\000" +
     "\002\010\005\000\002\010\005\000\002\010\005\000\002" +
-    "\010\005\000\002\010\005\000\002\017\006\000\002\017" +
-    "\006\000\002\017\006\000\002\017\010\000\002\017\010" +
+    "\010\005\000\002\017\006\000\002\017\006\000\002\017" +
+    "\006\000\002\017\010\000\002\017\010\000\002\017\010" +
     "\000\002\017\010\000\002\017\010\000\002\017\010\000" +
-    "\002\017\010\000\002\017\010" });
+    "\002\017\010" });
 
   /** Access to production table. */
   public short[][] production_table() {return _production_table;}
@@ -222,16 +222,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 8: // else ::= if 
-            {
-              Object RESULT =null;
-
-              CUP$parser$result = parser.getSymbolFactory().newSymbol("else",1, ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), ((java_cup.runtime.Symbol)CUP$parser$stack.peek()), RESULT);
-            }
-          return CUP$parser$result;
-
-          /*. . . . . . . . . . . . . . . . . . . .*/
-          case 9: // else ::= if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM 
+          case 8: // else ::= if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM 
             {
               Object RESULT =null;
 
@@ -240,7 +231,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 10: // op_logico ::= expressao_relacional 
+          case 9: // op_logico ::= expressao_relacional 
             {
               Object RESULT =null;
 
@@ -249,7 +240,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 11: // op_logico ::= expressao_relacional OPERADOR_LOGICO op_logico 
+          case 10: // op_logico ::= expressao_relacional OPERADOR_LOGICO op_logico 
             {
               Object RESULT =null;
 
@@ -258,7 +249,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 12: // op_logico ::= expressao_relacional OPERADOR_LOGICO 
+          case 11: // op_logico ::= expressao_relacional OPERADOR_LOGICO 
             {
               Object RESULT =null;
 
@@ -267,7 +258,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 13: // tipo_atribuicao ::= tipo_declaracao FIM_LINHA 
+          case 12: // tipo_atribuicao ::= tipo_declaracao FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -276,7 +267,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 14: // tipo_atribuicao ::= tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS 
+          case 13: // tipo_atribuicao ::= tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS 
             {
               Object RESULT =null;
 
@@ -285,7 +276,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 15: // tipo_atribuicao ::= NUMEROS_REAIS FIM_LINHA 
+          case 14: // tipo_atribuicao ::= NUMEROS_REAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -294,7 +285,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 16: // tipo_atribuicao ::= tipo_declaracao ATRIBUICAO ID FIM_LINHA 
+          case 15: // tipo_atribuicao ::= tipo_declaracao ATRIBUICAO ID FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -303,7 +294,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 17: // expressao ::= tipo_atribuicao expressao 
+          case 16: // expressao ::= tipo_atribuicao expressao 
             {
               Object RESULT =null;
 
@@ -312,7 +303,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 18: // expressao ::= while expressao_repete 
+          case 17: // expressao ::= while expressao_repete 
             {
               Object RESULT =null;
 
@@ -321,7 +312,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 19: // expressao ::= else expressao_repete 
+          case 18: // expressao ::= else expressao_repete 
             {
               Object RESULT =null;
 
@@ -330,7 +321,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 20: // expressao ::= expressao_atribuicao expressao_repete 
+          case 19: // expressao ::= expressao_atribuicao expressao_repete 
             {
               Object RESULT =null;
 
@@ -339,7 +330,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 21: // expressao ::= expressao 
+          case 20: // expressao ::= expressao 
             {
               Object RESULT =null;
 
@@ -348,7 +339,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 22: // expressao_relacional ::= ID op_relacional ID 
+          case 21: // expressao_relacional ::= ID op_relacional ID 
             {
               Object RESULT =null;
 
@@ -357,7 +348,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 23: // expressao_relacional ::= ID op_relacional NUMEROS_NATURAIS 
+          case 22: // expressao_relacional ::= ID op_relacional NUMEROS_NATURAIS 
             {
               Object RESULT =null;
 
@@ -366,7 +357,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 24: // expressao_relacional ::= ID op_relacional NUMEROS_REAIS 
+          case 23: // expressao_relacional ::= ID op_relacional NUMEROS_REAIS 
             {
               Object RESULT =null;
 
@@ -375,7 +366,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 25: // expressao_relacional ::= NUMEROS_NATURAIS op_relacional ID 
+          case 24: // expressao_relacional ::= NUMEROS_NATURAIS op_relacional ID 
             {
               Object RESULT =null;
 
@@ -384,7 +375,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 26: // expressao_relacional ::= NUMEROS_REAIS op_relacional ID 
+          case 25: // expressao_relacional ::= NUMEROS_REAIS op_relacional ID 
             {
               Object RESULT =null;
 
@@ -393,7 +384,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 27: // expressao_atribuicao ::= ID op_atribuicao ID FIM_LINHA 
+          case 26: // expressao_atribuicao ::= ID op_atribuicao ID FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -402,7 +393,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 28: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA 
+          case 27: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -411,7 +402,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 29: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS FIM_LINHA 
+          case 28: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -420,7 +411,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 30: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA 
+          case 29: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -429,7 +420,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 31: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA 
+          case 30: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -438,7 +429,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 32: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA 
+          case 31: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -447,7 +438,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 33: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA 
+          case 32: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -456,7 +447,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 34: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA 
+          case 33: // expressao_atribuicao ::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -465,7 +456,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 35: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA 
+          case 34: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA 
             {
               Object RESULT =null;
 
@@ -474,7 +465,7 @@ class CUP$parser$actions {
           return CUP$parser$result;
 
           /*. . . . . . . . . . . . . . . . . . . .*/
-          case 36: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA 
+          case 35: // expressao_atribuicao ::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA 
             {
               Object RESULT =null;
 
