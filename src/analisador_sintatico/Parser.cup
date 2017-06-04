@@ -38,7 +38,7 @@ op_logico;
 
 s ::= expressao_repete;
 
-if ::= RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM  RESERVADO_THEN CHAVE_INICIO expressao_repete CHAVE_FIM;
+if ::= RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
 
 else ::= if | if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
 
