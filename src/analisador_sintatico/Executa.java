@@ -19,12 +19,12 @@ public class Executa extends javax.swing.JFrame {
 
     public JTextArea jText;
     public JTextField carregaArquivo;
-    private Parser p;
+    private parser p;
 
     public void executar() throws Exception {
         jText = jTextAreaInsert;
         try {
-            p = new Parser(new analisador_sintatico.Lexer(new java.io.FileInputStream("sentenca.txt")));
+            p = new parser(new analisador_sintatico.Lexer(new java.io.FileInputStream("sentenca.txt")));
             p.parse();
 
             jTextArea1.setText("Sentença correta");
