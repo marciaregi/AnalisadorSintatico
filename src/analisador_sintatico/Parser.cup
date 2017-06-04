@@ -33,8 +33,11 @@ terminal    ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
 non terminal    if ,if_else, while, tipo_declaracao,  
                 expressao_relacional, expressao,  op_relacional, op_atribuicao, 
                 tipo_atribuicao, expressao_atribuicao,
-                op_logico, expressao_aritmetica, tipo_generico, id_ou_numero;
+                op_logico, expressao_aritmetica, tipo_generico, id_ou_numero, inicia;
 
+
+
+inicia              ::=     tipo_declaracao| if_else| while;
 
 
 if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao CHAVE_FIM;
