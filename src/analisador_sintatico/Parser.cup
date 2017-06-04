@@ -69,11 +69,17 @@ expressao_relacional ::=    ID op_relacional ID |
                             ID op_relacional NUMEROS_NATURAIS | 
                             ID op_relacional NUMEROS_REAIS | 
                             NUMEROS_NATURAIS op_relacional ID | 
-                            NUMEROS_REAIS op_relacional ID;
+                            NUMEROS_REAIS op_relacional ID | 
+                            NUMEROS_NATURAIS op_relacional NUMEROS_NATURAIS |
+                            NUMEROS_REAIS op_relacional NUMEROS_REAIS |
+                            NUMEROS_REAIS op_relacional NUMEROS_NATURAIS |
+                            NUMEROS_NATURAIS op_relacional NUMEROS_REAIS |
+                            TEXTO op_relacional TEXTO;
 
 expressao_atribuicao ::=    ID op_atribuicao ID FIM_LINHA | 
                             ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA | 
                             ID op_atribuicao NUMEROS_REAIS FIM_LINHA |
+                            ID op_atribuicao TEXTO FIM_LINHA |
                             ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA |
                             ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA | 
                             ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA| 
