@@ -80,10 +80,13 @@ expressao_atribuicao ::=    ID op_atribuicao ID FIM_LINHA |
                             ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA | 
                             ID op_atribuicao NUMEROS_REAIS FIM_LINHA |
                             ID op_atribuicao TEXTO FIM_LINHA |
-                            ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA |
-                            ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA | 
-                            ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA| 
-                            ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA |
-                            ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA | 
-                            ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA | 
-                            ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
+                            ID op_atribuicao expressao_aritmetica FIM_LINHA;
+
+expressao_aritmetica ::=    ID OPERADOR_ARITMETICO ID |
+                            ID OPERADOR_ARITMETICO NUMEROS_NATURAIS |
+                            ID OPERADOR_ARITMETICO NUMEROS_REAIS
+                            NUMEROS_NATURAIS OPERADOR_ARITMETICO ID |
+                            NUMEROS_REAIS OPERADOR_ARITMETICO ID |
+                            NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS |
+                            NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS |
+                            OPERADOR_ARITMETICO expressao_aritmetica;
