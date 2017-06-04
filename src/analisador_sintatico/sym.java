@@ -8,34 +8,29 @@ package analisador_sintatico;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int LINHA = 14;
   public static final int CHAVE_FIM = 10;
-  public static final int RESERVADO_FIM = 25;
+  public static final int RESERVADO_FIM = 20;
   public static final int CHAVE_INICIO = 9;
-  public static final int FIM_COMANDO = 16;
+  public static final int FIM_COMANDO = 13;
   public static final int OPERADOR_RELACIONAL = 7;
-  public static final int FIM_LINHA = 20;
-  public static final int ERROR = 15;
+  public static final int FIM_LINHA = 16;
   public static final int ID = 2;
-  public static final int TIPO = 27;
+  public static final int TIPO = 22;
   public static final int NUMEROS_NATURAIS = 4;
   public static final int ATRIBUICAO = 11;
-  public static final int PARENTESES_FIM = 23;
+  public static final int PARENTESES_FIM = 18;
   public static final int EOF = 0;
   public static final int OPERADOR_ARITMETICO = 3;
-  public static final int RESERVADO_ELSE = 18;
-  public static final int PARENTESES_INICIO = 22;
-  public static final int RESERVADO_THEN = 12;
+  public static final int RESERVADO_ELSE = 14;
+  public static final int PARENTESES_INICIO = 17;
   public static final int TEXTO = 5;
-  public static final int RESERVADO_WHILE = 19;
+  public static final int RESERVADO_WHILE = 15;
   public static final int error = 1;
-  public static final int INICIO_COMANDO = 21;
   public static final int OPERADOR_LOGICO = 6;
-  public static final int RESERVADO_IF = 13;
-  public static final int TIPO_NUMERICO = 26;
+  public static final int RESERVADO_IF = 12;
+  public static final int TIPO_NUMERICO = 21;
   public static final int NUMEROS_REAIS = 8;
-  public static final int RESERVADO_INICIO = 24;
-  public static final int BRANCO = 17;
+  public static final int RESERVADO_INICIO = 19;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
@@ -49,16 +44,11 @@ public class sym {
   "CHAVE_INICIO",
   "CHAVE_FIM",
   "ATRIBUICAO",
-  "RESERVADO_THEN",
   "RESERVADO_IF",
-  "LINHA",
-  "ERROR",
   "FIM_COMANDO",
-  "BRANCO",
   "RESERVADO_ELSE",
   "RESERVADO_WHILE",
   "FIM_LINHA",
-  "INICIO_COMANDO",
   "PARENTESES_INICIO",
   "PARENTESES_FIM",
   "RESERVADO_INICIO",

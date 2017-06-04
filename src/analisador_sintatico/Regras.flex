@@ -32,18 +32,16 @@ TIPO                = ("caracter"| "Palavra")
 TIPO_NUMERICO       = ("inteiro" | "flutuante")
 RESERVADO_IF        = "if"
 RESERVADO_ELSE      = "else"
-RESERVADO_THEN      = "then"
 RESERVADO_WHILE     = "while"
 RESERVADO_INICIO    = "inicio"
 RESERVADO_FIM       = "fim"
 RESERVADO_FIM       = "fim"
-BRANCO              = [\t\f]
+BRANCO              = [\t \f \n]
 
 %%
 
 {RESERVADO_IF}          {return new Symbol(sym.RESERVADO_IF, yychar, yyline, yytext());} 
 {RESERVADO_ELSE}        {return new Symbol(sym.RESERVADO_ELSE, yychar, yyline, yytext());}
-{RESERVADO_THEN}        {return new Symbol(sym.RESERVADO_THEN, yychar, yyline, yytext());}
 {RESERVADO_WHILE}       {return new Symbol(sym.RESERVADO_WHILE, yychar, yyline, yytext());}
 {TIPO}                  {return new Symbol(sym.TIPO, yychar, yyline, yytext());}
 {TIPO_NUMERICO}         {return new Symbol(sym.TIPO_NUMERICO, yychar, yyline, yytext());}
@@ -61,6 +59,6 @@ BRANCO              = [\t\f]
 {ID}                    {return new Symbol(sym.ID, yychar, yyline, yytext());}
 {NUMEROS_NATURAIS}      {return new Symbol(sym.NUMERO_NATURAIS, yychar, yyline, yytext());}
 {NUMEROS_REIAS}         {return new Symbol(sym.NUMERO_REAIS, yychar, yyline, yytext());}
-{BRANCO}                {return new Symbol(sym.BRANCO, yychar, yyline, yytext());}
+{BRANCO}                { }
 {ATRIBUICAO}            {return new Symbol(sym.ATRIBUICAO, yychar, yyline, yytext());}
 . {return new Symbol (sym.ERROR, yychar, yyline, yytext());}

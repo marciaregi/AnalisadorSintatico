@@ -25,21 +25,21 @@ parser code
 
 terminal    ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
             OPERADOR_LOGICO, OPERADOR_RELACIONAL, NUMEROS_REAIS,
-            CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_THEN, RESERVADO_IF, 
-            LINHA, ERROR, FIM_COMANDO, BRANCO,  RESERVADO_ELSE,RESERVADO_WHILE,
-            FIM_LINHA, INICIO_COMANDO, PARENTESES_INICIO, PARENTESES_FIM, 
+            CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_IF, 
+            FIM_COMANDO, RESERVADO_ELSE,RESERVADO_WHILE,
+            FIM_LINHA, PARENTESES_INICIO, PARENTESES_FIM, 
             RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
 
-non terminal    if ,if_else, while, tipo_declaracao, tipo_atribuicao_numero, 
-                tipo_atribuicao_numero_reais, expressao_relacional, expressao, 
-                op_relacional, op_atribuicao, tipo_atribuicao, numero_id, expressao_atribuicao,
-                op_logico;
+non terminal    if ,if_else, while, tipo_declaracao,  
+                expressao_relacional, expressao,  op_relacional, op_atribuicao, 
+                tipo_atribuicao, expressao_atribuicao,
+                op_logico, expressao_aritmetica, tipo_generico;
 
 
-tipo_declaracao                 ::= TIPO ID;
-tipo_atribuicao_numero_reais    ::= TIPO_NUMERICO ID ATRIBUICAO NUMEROS_REAIS FIM_LINHA;
-tipo_atribuicao_numero          ::= TIPO_NUMERICO ID ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA;
-tipo_atribuicao_nome            ::= TIPO ID ATRIBUICAO TEXTO FIM_LINHA;
+tipo_declaracao     ::=     tipo_generico ID;
+
+tipo_generico       ::=     TIPO | TIPO_NUMERICO;
+
 op_relacional       ::=     OPERADOR_RELACIONAL;
 
 op_atribuicao       ::=     ATRIBUICAO;
@@ -57,8 +57,9 @@ op_logico           ::=     expressao_relacional |
 tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
                             tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA |
                             tipo_declaracao ATRIBUICAO NUMEROS_REAIS FIM_LINHA |
-                            tipo_declaracao ATRIBUICAO ID FIM_LINHA;
-
+                            tipo_declaracao ATRIBUICAO ID FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO TEXTO FIM_LINHA;
+                            
 expressao           ::=     tipo_atribuicao |
                             while |
                             if_else |
@@ -90,3 +91,4 @@ expressao_aritmetica ::=    ID OPERADOR_ARITMETICO ID |
                             NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS |
                             NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS |
                             OPERADOR_ARITMETICO expressao_aritmetica;
+
