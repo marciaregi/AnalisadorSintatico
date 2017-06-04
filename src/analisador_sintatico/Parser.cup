@@ -23,12 +23,12 @@ parser code
     }
 :};
 
-terminal    ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
+terminal    String ERROR, ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
             OPERADOR_LOGICO, OPERADOR_RELACIONAL, NUMEROS_REAIS,
             CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_IF, 
-            FIM_COMANDO, RESERVADO_ELSE,RESERVADO_WHILE,
+            RESERVADO_ELSE,RESERVADO_WHILE,
             FIM_LINHA, PARENTESES_INICIO, PARENTESES_FIM, 
-            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO, ERROR;
+            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
 
 non terminal    if ,if_else, while, tipo_declaracao,  
                 expressao_relacional, expressao,  op_relacional, op_atribuicao, 

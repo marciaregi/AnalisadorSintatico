@@ -8,33 +8,33 @@ package analisador_sintatico;
 /** CUP generated class containing symbol constants. */
 public class sym {
   /* terminals */
-  public static final int CHAVE_FIM = 10;
+  public static final int CHAVE_FIM = 11;
   public static final int RESERVADO_FIM = 20;
-  public static final int CHAVE_INICIO = 9;
-  public static final int FIM_COMANDO = 13;
-  public static final int OPERADOR_RELACIONAL = 7;
+  public static final int CHAVE_INICIO = 10;
+  public static final int OPERADOR_RELACIONAL = 8;
   public static final int FIM_LINHA = 16;
-  public static final int ERROR = 23;
-  public static final int ID = 2;
+  public static final int ERROR = 2;
+  public static final int ID = 3;
   public static final int TIPO = 22;
-  public static final int NUMEROS_NATURAIS = 4;
-  public static final int ATRIBUICAO = 11;
+  public static final int NUMEROS_NATURAIS = 5;
+  public static final int ATRIBUICAO = 12;
   public static final int PARENTESES_FIM = 18;
   public static final int EOF = 0;
-  public static final int OPERADOR_ARITMETICO = 3;
+  public static final int OPERADOR_ARITMETICO = 4;
   public static final int RESERVADO_ELSE = 14;
   public static final int PARENTESES_INICIO = 17;
-  public static final int TEXTO = 5;
+  public static final int TEXTO = 6;
   public static final int RESERVADO_WHILE = 15;
   public static final int error = 1;
-  public static final int OPERADOR_LOGICO = 6;
-  public static final int RESERVADO_IF = 12;
+  public static final int OPERADOR_LOGICO = 7;
+  public static final int RESERVADO_IF = 13;
   public static final int TIPO_NUMERICO = 21;
-  public static final int NUMEROS_REAIS = 8;
+  public static final int NUMEROS_REAIS = 9;
   public static final int RESERVADO_INICIO = 19;
   public static final String[] terminalNames = new String[] {
   "EOF",
   "error",
+  "ERROR",
   "ID",
   "OPERADOR_ARITMETICO",
   "NUMEROS_NATURAIS",
@@ -46,7 +46,6 @@ public class sym {
   "CHAVE_FIM",
   "ATRIBUICAO",
   "RESERVADO_IF",
-  "FIM_COMANDO",
   "RESERVADO_ELSE",
   "RESERVADO_WHILE",
   "FIM_LINHA",
@@ -55,8 +54,7 @@ public class sym {
   "RESERVADO_INICIO",
   "RESERVADO_FIM",
   "TIPO_NUMERICO",
-  "TIPO",
-  "ERROR"
+  "TIPO"
   };
 }
 

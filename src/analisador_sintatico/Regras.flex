@@ -35,7 +35,6 @@ RESERVADO_ELSE      = "else"
 RESERVADO_WHILE     = "while"
 RESERVADO_INICIO    = "inicio"
 RESERVADO_FIM       = "fim"
-RESERVADO_FIM       = "fim"
 BRANCO              = [\t \f \n]
 
 %%
