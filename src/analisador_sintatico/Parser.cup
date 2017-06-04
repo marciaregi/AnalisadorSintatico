@@ -40,21 +40,22 @@ s ::= expressao_repete;
 
 if ::= RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
 
-else ::= if | if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
+else ::=    if | 
+            if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
 
 while ::= RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
 
-op_logico ::= expressao_relacional | expressao_relacional OPERADOR_LOGICO op_logico | expressao_relacional OPERADOR_LOGICO;
+op_logico ::=   expressao_relacional | 
+                expressao_relacional OPERADOR_LOGICO op_logico |
+                expressao_relacional OPERADOR_LOGICO;
 
 tipo_geral ::= TIPO;
 
 tipo_declaracao::= tipo_geral ID;
 
-tipo_atribuicao ::= tipo_declaracao FIM_LINHA;
-
-tipo_atribuicao ::= tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS|NUMEROS_REAIS FIM_LINHA;
-
-tipo_atribuicao ::= tipo_declaracao ATRIBUICAO ID FIM_LINHA;
+tipo_atribuicao ::= tipo_declaracao FIM_LINHA |
+                    tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS|NUMEROS_REAIS FIM_LINHA | 
+                    tipo_declaracao ATRIBUICAO ID FIM_LINHA;
 
 tipo_atribuicao_numero ::= TIPO_NUMERICO ID ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA;
 
@@ -64,42 +65,26 @@ op_relacional ::= OPERADOR_RELACIONAL;
 
 op_atribuicao ::= OPERADOR_ATRIBUICAO;
 
-expressao ::= tipo_atribuicao expressao_repete;
+expressao ::=   tipo_atribuicao expressao_repete |
+                while expressao_repete |
+                else expressao_repete |
+                expressao_atribuicao expressao_repete;
 
-expressao ::= while expressao_repete;
+expressao_relacional ::=    ID op_relacional ID |
+                            ID op_relacional NUMEROS_NATURAIS | 
+                            ID op_relacional NUMEROS_REAIS | 
+                            NUMEROS_NATURAIS OPERADOR_RELACIONAL ID | 
+                            NUMEROS_REAIS OPERADOR_RELACIONAL ID;
 
-expressao ::= else expressao_repete;
+expressao_atribuicao ::=    ID op_atribuicao ID FIM_LINHA | 
+                            ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA | 
+                            ID op_atribuicao NUMEROS_REAIS FIM_LINHA |
+                            ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA |
+                            ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA | 
+                            ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA| 
+                            ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA |
+                            ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA | 
+                            ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA | 
+                            ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
 
-expressao ::= expressao_atribuicao expressao_repete;
-
-expressao_relacional ::= ID op_relacional ID;
-
-expressao_relacional ::= ID op_relacional NUMEROS_NATURAIS;
-
-expressao_relacional ::= ID op_relacional NUMEROS_REAIS;
-
-expressao_relacional ::= NUMEROS_NATURAIS OPERADOR_RELACIONAL ID;
-
-expressao_relacional ::= NUMEROS_REAIS OPERADOR_RELACIONAL ID;
-
-expressao_atribuicao::= ID op_atribuicao ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_repete ::= expressao |; 
+expressao_repete ::= expressao; 
