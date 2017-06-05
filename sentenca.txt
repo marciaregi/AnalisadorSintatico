@@ -1,1 +1,1 @@
-inteiro a;
+inicio flutuante a = -2,2e2; fim 

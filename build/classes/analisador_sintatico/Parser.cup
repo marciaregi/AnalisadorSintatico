@@ -23,83 +23,61 @@ parser code
     }
 :};
 
-terminal ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
-    OPERADOR_LOGICO, OPERADOR_RELACIONAL, NUMEROS_REAIS,OPERADOR_ATRIBUICAO,
-    CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_THEN, RESERVADO_IF, 
-    LINHA, ERROR, FIM_COMANDO, BRANCO,  RESERVADO_ELSE,RESERVADO_WHILE,
-    FIM_LINHA, INICIO_COMANDO, PARENTESES_INICIO, PARENTESES_FIM, 
-    RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
+terminal    String ERROR, ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
+            OPERADOR_LOGICO, OPERADOR_RELACIONAL, NUMEROS_REAIS,
+            CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_IF, 
+            RESERVADO_ELSE,RESERVADO_WHILE,
+            FIM_LINHA, PARENTESES_INICIO, PARENTESES_FIM, 
+            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
 
-non terminal s, if ,else, while, tipo_geral, tipo_declaracao, tipo_atribuicao_numero, 
-tipo_atribuicao_numero_reais, expressao_relacional, expressao, expressao_repete,
-op_relacional, op_atribuicao, tipo_atribuicao, numero_id, expressao_atribuicao,
-op_logico;
+non terminal    if ,if_else, while, tipo_declaracao,  
+                expressao_relacional, expressao,  op_relacional, op_atribuicao, 
+                tipo_atribuicao, expressao_atribuicao, s, expressao_repete,
+                op_logico, expressao_aritmetica, tipo_generico, id_ou_numero, inicia;
 
+
+start with inicia;
+
+inicia ::= RESERVADO_INICIO s RESERVADO_FIM ;
 
 s ::= expressao_repete;
 
-if ::= RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM  RESERVADO_THEN CHAVE_INICIO expressao_repete CHAVE_FIM;
+if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
 
-else ::= if | if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
+if_else             ::=     if |
+                            if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
 
-while ::= RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
+while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
 
-op_logico ::= expressao_relacional | expressao_relacional OPERADOR_LOGICO op_logico | expressao_relacional OPERADOR_LOGICO;
+id_ou_numero        ::=     ID|NUMEROS_NATURAIS|NUMEROS_REAIS;
 
-tipo_geral ::= TIPO;
+tipo_declaracao     ::=     tipo_generico ID;
 
-tipo_declaracao::= tipo_geral ID;
+tipo_generico       ::=     TIPO | TIPO_NUMERICO;
 
-tipo_atribuicao ::= tipo_declaracao FIM_LINHA;
+op_relacional       ::=     OPERADOR_RELACIONAL;
 
-tipo_atribuicao ::= tipo_declaracao ATRIBUICAO NUMEROS_NATURAIS|NUMEROS_REAIS FIM_LINHA;
+op_atribuicao       ::=     ATRIBUICAO;
 
-tipo_atribuicao ::= tipo_declaracao ATRIBUICAO ID FIM_LINHA;
+op_logico           ::=     expressao_relacional | 
+                            expressao_relacional OPERADOR_LOGICO op_logico |
+                            expressao_relacional OPERADOR_LOGICO;
 
-tipo_atribuicao_numero ::= TIPO_NUMERICO ID ATRIBUICAO NUMEROS_NATURAIS FIM_LINHA;
+tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO id_ou_numero FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO TEXTO FIM_LINHA;
+                            
+expressao           ::=     tipo_atribuicao |
+                            while |
+                            if_else |
+                            expressao_atribuicao;
 
-tipo_atribuicao_numero_reais ::= TIPO_NUMERICO ID ATRIBUICAO NUMEROS_REAIS FIM_LINHA;
+expressao_relacional ::=    id_ou_numero op_relacional id_ou_numero |
+                            TEXTO op_relacional TEXTO;
 
-op_relacional ::= OPERADOR_RELACIONAL;
+expressao_atribuicao ::=    id_ou_numero op_atribuicao id_ou_numero FIM_LINHA | 
+                            id_ou_numero op_atribuicao expressao_aritmetica FIM_LINHA;
 
-op_atribuicao ::= OPERADOR_ATRIBUICAO;
+expressao_aritmetica ::=    id_ou_numero OPERADOR_ARITMETICO id_ou_numero;
 
-expressao ::= tipo_atribuicao expressao_repete;
-
-expressao ::= while expressao_repete;
-
-expressao ::= else expressao_repete;
-
-expressao ::= expressao_atribuicao expressao_repete;
-
-expressao_relacional ::= ID op_relacional ID;
-
-expressao_relacional ::= ID op_relacional NUMEROS_NATURAIS;
-
-expressao_relacional ::= ID op_relacional NUMEROS_REAIS;
-
-expressao_relacional ::= NUMEROS_NATURAIS OPERADOR_RELACIONAL ID;
-
-expressao_relacional ::= NUMEROS_REAIS OPERADOR_RELACIONAL ID;
-
-expressao_atribuicao::= ID op_atribuicao ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO ID FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_NATURAIS OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao NUMEROS_REAIS OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_REAIS FIM_LINHA;
-
-expressao_atribuicao::= ID op_atribuicao ID OPERADOR_ARITMETICO NUMEROS_NATURAIS FIM_LINHA;
-
-expressao_repete ::= expressao |; 
+expressao_repete ::= expressao expressao | expressao;
