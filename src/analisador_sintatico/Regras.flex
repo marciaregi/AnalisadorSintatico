@@ -19,7 +19,7 @@ OPERADOR_ARITMETICO = [\+|\*|\-|\/]
 ID                  = ([a-z|A-Z]|[DIG])*
 TEXTO               = '.[^']*'
 NUMEROS_NATURAIS    = {DIG}+
-NUMEROS_REIAS       = -{DIG}+,{DIG}+|{DIG}+,{DIG}+|-{DIG}+,-{DIG}+|{DIG}+"e"{DIG}+|-{DIG}+"e"{DIG}+|-{DIG}+"e"-{DIG}+
+NUMEROS_REIAS       = -{DIG}+,{DIG}+|{DIG}+,{DIG}+|-{DIG}+,-{DIG}+|{DIG}+"e"{DIG}+|-{DIG}+"e"{DIG}+|-{DIG}+"e"-{DIG}+|{DIG}+,{DIG}+"e"{DIG}+|{DIG}+,{DIG}+"e"{DIG}+,{DIG}+|-{DIG}+,{DIG}+"e"{DIG}+|-{DIG}+,{DIG}+"e"-{DIG}+,{DIG}+|{DIG}+,{DIG}+"e"-{DIG}+|-{DIG}+,{DIG}+"e"{DIG}+,{DIG}+|-{DIG}+,{DIG}+"e"-{DIG}+|{DIG}+,{DIG}+"e"-{DIG}+,{DIG}+
 OPERADOR_LOGICO     = (":|" | "&&" | "!")
 OPERADOR_RELACIONAL = ("==" | "!=" | "<" | ">" | "<=" | ">=")
 ATRIBUICAO          = "="
