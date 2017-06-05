@@ -37,7 +37,7 @@ public class Executa extends javax.swing.JFrame {
 
     public Executa() {
         initComponents();
-        super.getContentPane().setBackground(new Color(136, 183, 201));
+        super.getContentPane().setBackground(new Color(0, 153, 204));
         super.setLocationRelativeTo(null);
     }
 
