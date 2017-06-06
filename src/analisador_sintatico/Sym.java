@@ -6,7 +6,7 @@
 package analisador_sintatico;
 
 /** CUP generated class containing symbol constants. */
-public class sym {
+public class Sym {
   /* terminals */
   public static final int CHAVE_FIM = 11;
   public static final int RESERVADO_FIM = 20;

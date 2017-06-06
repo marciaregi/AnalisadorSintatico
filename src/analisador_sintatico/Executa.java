@@ -12,6 +12,7 @@ package analisador_sintatico;
 import java.awt.Color;
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -19,17 +20,18 @@ public class Executa extends javax.swing.JFrame {
 
     public JTextArea jText;
     public JTextField carregaArquivo;
-    private parser p;
+    private Parser p;
 
-    public void executar() throws Exception {
+    public void executar() {
         jText = jTextAreaInsert;
         try {
-            p = new parser(new analisador_sintatico.Yylex(new java.io.FileInputStream("sentenca.txt")));
+            p = new Parser(new Yylex(new java.io.FileInputStream("sentenca.txt")));
             p.parse();
 
             jTextArea1.setText("Sentença correta");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             System.err.println(e);
             jTextArea1.setText(p.getErro());
         }
@@ -38,7 +40,7 @@ public class Executa extends javax.swing.JFrame {
     public Executa() {
         initComponents();
         super.getContentPane().setBackground(new Color(0, 153, 204));
-        super.setLocationRelativeTo(null);
+        super.setLocationRelativeTo(rootPane);
     }
 
     @SuppressWarnings("unchecked")
@@ -177,6 +179,7 @@ public class Executa extends javax.swing.JFrame {
             }
             executar();
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
         }
     }
 
@@ -191,31 +194,6 @@ public class Executa extends javax.swing.JFrame {
 
     private void jButton4ActionPerformed() {
         jTextArea1.setText("");
-    }
-
-    public static void main(String args[]) {
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Executa.class
-                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-        }
-        java.awt.EventQueue.invokeLater(() -> {
-            new Executa().setVisible(true);
-        });
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            @Override
-//            public void run() {
-//                new Executa().setVisible(true);
-//            }
-//        });
     }
 
     private javax.swing.JButton jButton1;

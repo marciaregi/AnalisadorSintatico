@@ -5,6 +5,8 @@
  */
 package tela_principal;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Regina
@@ -33,7 +35,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Programol");
         getContentPane().setLayout(null);
 
         jButton1.setBackground(new java.awt.Color(0, 0, 0));
@@ -89,15 +92,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       analisador_lexico.TelaGerador.main(args);
+        new analisador_lexico.TelaGerador().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        analisador_sintatico.Executa.main(args);
+        JOptionPane.showMessageDialog(rootPane,"Abriuuu");
+        new analisador_sintatico.Executa().setVisible(true);
+
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        LexicoSintatico.main(args);
+        new LexicoSintatico().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**

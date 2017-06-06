@@ -3,7 +3,7 @@
 package analisador_sintatico;
 
 import java_cup.runtime.Symbol;
-import analisador_sintatico.sym;
+import analisador_sintatico.Sym;
 
 
 /**
@@ -632,87 +632,87 @@ class Yylex implements java_cup.runtime.Scanner {
 
       switch (zzAction < 0 ? zzAction : ZZ_ACTION[zzAction]) {
         case 16: 
-          { return new Symbol(sym.TEXTO, yychar, yyline, yytext());
+          { return new Symbol(Sym.TEXTO, yychar, yyline, yytext());
           }
         case 23: break;
         case 22: 
-          { return new Symbol(sym.TIPO_NUMERICO, yychar, yyline, yytext());
+          { return new Symbol(Sym.TIPO_NUMERICO, yychar, yyline, yytext());
           }
         case 24: break;
         case 1: 
-          { return new Symbol(sym.ID, yychar, yyline, yytext());
+          { return new Symbol(Sym.ID, yychar, yyline, yytext());
           }
         case 25: break;
         case 13: 
-          { return new Symbol(sym.CHAVE_FIM, yychar, yyline, yytext());
+          { return new Symbol(Sym.CHAVE_FIM, yychar, yyline, yytext());
           }
         case 26: break;
         case 2: 
-          { return new Symbol (sym.ERROR, yychar, yyline, yytext());
+          { return new Symbol (Sym.ERROR, yychar, yyline, yytext());
           }
         case 27: break;
         case 17: 
-          { return new Symbol(sym.RESERVADO_FIM, yychar, yyline, yytext());
+          { return new Symbol(Sym.RESERVADO_FIM, yychar, yyline, yytext());
           }
         case 28: break;
         case 4: 
-          { return new Symbol(sym.OPERADOR_ARITMETICO, yychar, yyline, yytext());
+          { return new Symbol(Sym.OPERADOR_ARITMETICO, yychar, yyline, yytext());
           }
         case 29: break;
         case 18: 
-          { return new Symbol(sym.RESERVADO_ELSE, yychar, yyline, yytext());
+          { return new Symbol(Sym.RESERVADO_ELSE, yychar, yyline, yytext());
           }
         case 30: break;
         case 19: 
-          { return new Symbol(sym.RESERVADO_WHILE, yychar, yyline, yytext());
+          { return new Symbol(Sym.RESERVADO_WHILE, yychar, yyline, yytext());
           }
         case 31: break;
         case 10: 
-          { return new Symbol(sym.PARENTESES_INICIO, yychar, yyline, yytext());
+          { return new Symbol(Sym.PARENTESES_INICIO, yychar, yyline, yytext());
           }
         case 32: break;
         case 11: 
-          { return new Symbol(sym.PARENTESES_FIM, yychar, yyline, yytext());
+          { return new Symbol(Sym.PARENTESES_FIM, yychar, yyline, yytext());
           }
         case 33: break;
         case 20: 
-          { return new Symbol(sym.RESERVADO_INICIO, yychar, yyline, yytext());
+          { return new Symbol(Sym.RESERVADO_INICIO, yychar, yyline, yytext());
           }
         case 34: break;
         case 15: 
-          { return new Symbol(sym.NUMEROS_REAIS, yychar, yyline, yytext());
+          { return new Symbol(Sym.NUMEROS_REAIS, yychar, yyline, yytext());
           }
         case 35: break;
         case 8: 
-          { return new Symbol(sym.OPERADOR_RELACIONAL, yychar, yyline, yytext());
+          { return new Symbol(Sym.OPERADOR_RELACIONAL, yychar, yyline, yytext());
           }
         case 36: break;
         case 14: 
-          { return new Symbol(sym.RESERVADO_IF, yychar, yyline, yytext());
+          { return new Symbol(Sym.RESERVADO_IF, yychar, yyline, yytext());
           }
         case 37: break;
         case 6: 
-          { return new Symbol(sym.OPERADOR_LOGICO, yychar, yyline, yytext());
+          { return new Symbol(Sym.OPERADOR_LOGICO, yychar, yyline, yytext());
           }
         case 38: break;
         case 7: 
-          { return new Symbol(sym.ATRIBUICAO, yychar, yyline, yytext());
+          { return new Symbol(Sym.ATRIBUICAO, yychar, yyline, yytext());
           }
         case 39: break;
         case 12: 
-          { return new Symbol(sym.CHAVE_INICIO, yychar, yyline, yytext());
+          { return new Symbol(Sym.CHAVE_INICIO, yychar, yyline, yytext());
           }
         case 40: break;
         case 9: 
-          { return new Symbol(sym.FIM_LINHA, yychar, yyline, yytext());
+          { return new Symbol(Sym.FIM_LINHA, yychar, yyline, yytext());
           }
         case 41: break;
         case 21: 
-          { return new Symbol(sym.TIPO, yychar, yyline, yytext());
+          { return new Symbol(Sym.TIPO, yychar, yyline, yytext());
           }
         case 42: break;
         case 3: 
-          { return new Symbol(sym.NUMEROS_NATURAIS, yychar, yyline, yytext());
+          { return new Symbol(Sym.NUMEROS_NATURAIS, yychar, yyline, yytext());
           }
         case 43: break;
         case 5: 
@@ -723,7 +723,7 @@ class Yylex implements java_cup.runtime.Scanner {
           if (zzInput == YYEOF && zzStartRead == zzCurrentPos) {
             zzAtEOF = true;
             zzDoEOF();
-              {     return new Symbol(sym.EOF, new String("Fim do arquivo"));
+              {     return new Symbol(Sym.EOF, new String("Fim do arquivo"));
  }
           } 
           else {
