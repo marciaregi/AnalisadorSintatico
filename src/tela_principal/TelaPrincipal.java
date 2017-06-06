@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package tela_principal;
-
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Regina
  */
 public class TelaPrincipal extends javax.swing.JFrame {
+
     String args[];
+
     /**
      * Creates new form TelaPrincipal
      */
@@ -96,8 +91,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        JOptionPane.showMessageDialog(rootPane,"Abriuuu");
-        new analisador_sintatico.Executa().setVisible(true);
+
+        new analisador_sintaticoo.TelaSintatico2().setVisible(true);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

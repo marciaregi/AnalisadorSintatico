@@ -8,7 +8,7 @@ import static analisador_lexico.Token.*;
  * <a href="http://www.jflex.de/">JFlex</a> 1.6.1
  * from the specification file <tt>/home/aluno/Downloads/AnalisadorSintatico/src/analisador_lexico/gramatica.lex</tt>
  */
-class AnalisadorLexico {
+public class AnalisadorLexico {
 
   /** This character denotes the end of file */
   public static final int YYEOF = -1;
@@ -277,7 +277,7 @@ public String lexeme;
    *
    * @param   in  the java.io.Reader to read input from.
    */
-  AnalisadorLexico(java.io.Reader in) {
+  public AnalisadorLexico(java.io.Reader in) {
     this.zzReader = in;
   }
 

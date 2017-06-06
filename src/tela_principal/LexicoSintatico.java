@@ -5,8 +5,15 @@
  */
 package tela_principal;
 
-import analisador_lexico.Token;
+import analisador_lexico.*;
+import analisador_sintaticoo.Parser;
+import analisador_sintaticoo.Yylex;
+import java.io.FileNotFoundException;
 import java.io.StringReader;
+import java.io.UnsupportedEncodingException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -14,7 +21,8 @@ import java.io.StringReader;
  */
 public class LexicoSintatico extends javax.swing.JFrame {
 
-    
+    private Parser p;
+
     /**
      * Creates new form LexicoSintatico
      */
@@ -23,11 +31,7 @@ public class LexicoSintatico extends javax.swing.JFrame {
         txtSaidaLexico.setEditable(false);
         txtSaidaSintatico.setEditable(false);
     }
-    
-    
-      
-    
-     
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -54,7 +58,7 @@ public class LexicoSintatico extends javax.swing.JFrame {
         jTextField7 = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         getContentPane().setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Swis721 Blk BT", 1, 24)); // NOI18N
@@ -158,59 +162,226 @@ public class LexicoSintatico extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-     
-   
-        
+    //Analisador Lexico
+    public void executar() throws Exception {
+        int cont = 0;
+        int coluna = 1;
+        String expr;
+        //jText = textArea1;
+
+        AnalisadorLexico lexical = new AnalisadorLexico(new StringReader(txtEntrada.getText()));
+        String resultado = "";
+
+        while (true) {
+            Token token = lexical.yylex();
+            if (token == null) {
+                System.out.println(resultado);
+                txtSaidaLexico.setText(resultado);
+
+                return;
+            }
+            switch (token) {
+
+                case OPERADOR_ARITMETICO:
+
+                    resultado = resultado + "Linha: " + cont + " <Operador_Aritmético> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case OPERADOR_LOGICO:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Operador_Lógico> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case ATRIBUICAO:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Operador_Atribuição> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case FIM_COMANDO:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Fim_Programa> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case OPERADOR_RELACIONAL:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Operador_Relacional> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case COMENTARIO:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Comentario> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case LINHA:
+                    cont++;
+                    coluna = 1;
+                    break;
+
+                case ERROR:
+                    //cont ++;                    
+                    resultado = resultado + "Erro na linha " + cont + ": Símbolo não reconhecido" + lexical.lexeme.toString() + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case ID:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <ID> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+
+                case NUMEROS_REIAS:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Numeros_reais> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case TEXTO:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Texto> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case THEN:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Então> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case WHILE:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Laço> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case FOR:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Laço> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case IF:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Condicional> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case ELSE:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Condicional> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case NUMEROS_NATURAIS:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Numero> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case EXPOENTE:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Expoente> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case CHAVE_INICIO:
+                    //cont++;
+                    resultado = resultado + "Linha: " + cont + " <Chave_Inicio> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case BRANCO:
+                    coluna++;
+
+                    break;
+                case CHAVE_FIM:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Chave_Fim> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case FIM_LINHA:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Fim_linha> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case INICIO:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Inicio_Programa> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case PARENTESES_INICIO:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Parenteses_Inicio> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                case PARENTESES_FIM:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <Parenteses_Fim> " + lexical.lexeme + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+                default:
+                    //cont ++;
+                    resultado = resultado + "Linha: " + cont + " <" + lexical.lexeme + "> " + " Coluna " + coluna + "\n";
+                    coluna += lexical.lexeme.length();
+                    break;
+            }
+        }
+
+    }
+
+   public void executarSintatico() {
        
+        try {
+            p = new Parser(new Yylex(new StringReader(txtEntrada.getText())));
+            p.parse();
+
+            txtSaidaSintatico.setText("Sentença correta");
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+            System.err.println(e);
+            txtSaidaSintatico.setText(p.getErro());
+        }
+    }
+
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        txtEntrada.setText("");
+        txtSaidaLexico.setText("");
+        txtSaidaSintatico.setText("");
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     private void jButtonLexicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLexicoActionPerformed
-        // TODO add your handling code here:
+        AnalisadorLexico lexical = new AnalisadorLexico(new StringReader(txtEntrada.getText()));
+        try {
+            executar();
+        } catch (Exception ex) {
+            Logger.getLogger(LexicoSintatico.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButtonLexicoActionPerformed
 
     private void jButtonSintaticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSintaticoActionPerformed
-        // TODO add your handling code here:
+        try {
+            try (java.io.PrintWriter writer = new java.io.PrintWriter("sentenca.txt", "UTF-8")) {
+                writer.print(txtEntrada.getText());
+            } catch (FileNotFoundException | UnsupportedEncodingException e) {
+            }
+            executarSintatico();
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButtonSintaticoActionPerformed
 
     private void jButtonAnalisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAnalisarActionPerformed
-        // TODO add your handling code here:
+        AnalisadorLexico lexical = new AnalisadorLexico(new StringReader(txtEntrada.getText()));
+        try {
+            executar();
+        } catch (Exception ex) {
+            Logger.getLogger(LexicoSintatico.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        try {
+
+            executarSintatico();
+        } catch (Exception e) {
+        }
     }//GEN-LAST:event_jButtonAnalisarActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LexicoSintatico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LexicoSintatico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LexicoSintatico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LexicoSintatico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new LexicoSintatico().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAnalisar;

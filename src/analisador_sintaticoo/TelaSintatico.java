@@ -3,29 +3,27 @@
 // * To change this template file, choose Tools | Templates
 // * and open the template in the editor.
 // */
-package analisador_sintatico;
+package analisador_sintaticoo;
 ///**
 // *
 // * @author Regina
 // */
 
 import java.awt.Color;
-import java.io.FileNotFoundException;
-import java.io.UnsupportedEncodingException;
+import java.io.StringReader;
 import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
-public class Executa extends javax.swing.JFrame {
+public class TelaSintatico extends javax.swing.JFrame {
 
-    public JTextArea jText;
+
     public JTextField carregaArquivo;
-    private Parser p;
+    public Parser p;
 
     public void executar() {
-        jText = jTextAreaInsert;
         try {
-            p = new Parser(new Yylex(new java.io.FileInputStream("sentenca.txt")));
+            p = new Parser(new Yylex(new StringReader(jTextAreaInsert.getText())));
             p.parse();
 
             jTextArea1.setText("Sentença correta");
@@ -37,10 +35,12 @@ public class Executa extends javax.swing.JFrame {
         }
     }
 
-    public Executa() {
+    public TelaSintatico() {
+        JOptionPane.showMessageDialog(rootPane,"Abriuuu1");
         initComponents();
         super.getContentPane().setBackground(new Color(0, 153, 204));
         super.setLocationRelativeTo(rootPane);
+        JOptionPane.showMessageDialog(rootPane,"Abriuuu2");
     }
 
     @SuppressWarnings("unchecked")
@@ -172,15 +172,7 @@ public class Executa extends javax.swing.JFrame {
     }
 
     private void jButton1ActionPerformed() {
-        try {
-            try (java.io.PrintWriter writer = new java.io.PrintWriter("sentenca.txt", "UTF-8")) {
-                writer.print(jTextAreaInsert.getText());
-            } catch (FileNotFoundException | UnsupportedEncodingException e) {
-            }
-            executar();
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
-        }
+        executar();
     }
 
     private void jButton2ActionPerformed() {
