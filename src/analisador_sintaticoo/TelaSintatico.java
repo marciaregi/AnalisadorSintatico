@@ -11,36 +11,28 @@ package analisador_sintaticoo;
 
 import java.awt.Color;
 import java.io.StringReader;
-import javax.swing.JOptionPane;
-import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 public class TelaSintatico extends javax.swing.JFrame {
 
-
     public JTextField carregaArquivo;
-    public Parser p;
-
-    public void executar() {
-        try {
-            p = new Parser(new Yylex(new StringReader(jTextAreaInsert.getText())));
-            p.parse();
-
-            jTextArea1.setText("Sentença correta");
-
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
-            System.err.println(e);
-            jTextArea1.setText(p.getErro());
-        }
-    }
+    public analisador_sintaticoo.Parser p;
 
     public TelaSintatico() {
-        JOptionPane.showMessageDialog(rootPane,"Abriuuu1");
+
         initComponents();
         super.getContentPane().setBackground(new Color(0, 153, 204));
         super.setLocationRelativeTo(rootPane);
-        JOptionPane.showMessageDialog(rootPane,"Abriuuu2");
+    }
+
+    public void executar() {
+        try {
+            p = new analisador_sintaticoo.Parser(new analisador_sintaticoo.Yylex(new StringReader(jTextAreaInsert.getText())));
+            p.parse();
+            jTextArea1.setText("Sentença correta");
+        } catch (Exception e) {
+            jTextArea1.setText(p.getErro());
+        }
     }
 
     @SuppressWarnings("unchecked")

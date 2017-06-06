@@ -88,11 +88,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         new analisador_lexico.TelaGerador().setVisible(true);
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        new analisador_sintaticoo.TelaSintatico2().setVisible(true);
+        new analisador_sintaticoo.TelaSintatico().setVisible(true);
 
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -13,7 +13,6 @@ import java.io.StringReader;
 import java.io.UnsupportedEncodingException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -331,7 +330,6 @@ public class LexicoSintatico extends javax.swing.JFrame {
             txtSaidaSintatico.setText("Sentença correta");
 
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, e.getMessage());
             System.err.println(e);
             txtSaidaSintatico.setText(p.getErro());
         }
