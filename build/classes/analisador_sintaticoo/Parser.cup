@@ -1,0 +1,81 @@
+package analisador_sintatico;
+import java.io.*;
+import java_cup.runtime.*;
+import analisador_sintatico.Yylex;
+
+parser code 
+{:
+    public static void main (String args[]) throws Exception {
+        new parser (new Yylex(System.in)).parse();
+    }
+
+    public String erro;
+    
+    public String getErro() {
+        return erro;
+    }
+
+    public void syntax_error (Symbol s) {
+        erro = ("Erro de sintaxe. Linha: " + (s.right + 1) +
+        " Coluna: " + s.left + ". Texto: \"" + s.value + "\"");
+
+        System.out.print(erro);
+    }
+:};
+
+terminal    String ERROR, ID, OPERADOR_ARITMETICO, NUMEROS_NATURAIS, TEXTO,
+            OPERADOR_LOGICO, OPERADOR_RELACIONAL, NUMEROS_REAIS,
+            CHAVE_INICIO, CHAVE_FIM, ATRIBUICAO, RESERVADO_IF, 
+            RESERVADO_ELSE,RESERVADO_WHILE,
+            FIM_LINHA, PARENTESES_INICIO, PARENTESES_FIM, 
+            RESERVADO_INICIO, RESERVADO_FIM, TIPO_NUMERICO, TIPO;
+
+non terminal    if ,if_else, while, tipo_declaracao,  
+                expressao_relacional, expressao,  op_relacional, op_atribuicao, 
+                tipo_atribuicao, expressao_atribuicao, expressao_repete,
+                op_logico, expressao_aritmetica, tipo_generico, id_ou_numero, inicia;
+
+
+start with inicia;
+
+inicia ::= RESERVADO_INICIO expressao_repete RESERVADO_FIM ;
+
+if                  ::=     RESERVADO_IF PARENTESES_INICIO expressao_relacional PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
+
+if_else             ::=     if |
+                            if RESERVADO_ELSE CHAVE_INICIO expressao_repete CHAVE_FIM;
+
+while               ::=     RESERVADO_WHILE PARENTESES_INICIO op_logico PARENTESES_FIM CHAVE_INICIO expressao_repete CHAVE_FIM;
+
+id_ou_numero        ::=     ID|NUMEROS_NATURAIS|NUMEROS_REAIS;
+
+tipo_declaracao     ::=     tipo_generico ID;
+
+tipo_generico       ::=     TIPO | TIPO_NUMERICO;
+
+op_relacional       ::=     OPERADOR_RELACIONAL;
+
+op_atribuicao       ::=     ATRIBUICAO;
+
+op_logico           ::=     expressao_relacional | 
+                            expressao_relacional OPERADOR_LOGICO op_logico |
+                            expressao_relacional OPERADOR_LOGICO;
+
+tipo_atribuicao     ::=     tipo_declaracao FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO id_ou_numero FIM_LINHA |
+                            tipo_declaracao ATRIBUICAO TEXTO FIM_LINHA;
+                            
+expressao           ::=     tipo_atribuicao |
+                            while |
+                            if_else |
+                            expressao_atribuicao;
+
+expressao_relacional ::=    id_ou_numero op_relacional id_ou_numero |
+                            TEXTO op_relacional TEXTO;
+
+expressao_atribuicao ::=    id_ou_numero op_atribuicao id_ou_numero FIM_LINHA | 
+                            id_ou_numero op_atribuicao expressao_aritmetica FIM_LINHA;
+
+expressao_aritmetica ::=    id_ou_numero OPERADOR_ARITMETICO id_ou_numero;
+
+expressao_repete     ::=    expressao expressao_repete | expressao;
