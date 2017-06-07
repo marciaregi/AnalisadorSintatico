@@ -6,8 +6,6 @@
 
 package tela_principal;
 
-import javax.swing.JLabel;
-
 /**
  *
  * @author Alunotgn
@@ -45,92 +43,59 @@ public class Sobre extends javax.swing.JFrame {
         jLabel9.setForeground(new java.awt.Color(255, 255, 255));
         jLabel9.setText("PROGRAMOL");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(490, 70, 410, 120);
+        jLabel9.setBounds(470, 30, 410, 120);
 
         jLabel3.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("se preocupam em corrigir.");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 660, 1880, 70);
+        jLabel3.setBounds(20, 580, 1880, 70);
 
         jLabel2.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setText("ciência da computação do Instituto federal de Brasília. ");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 420, 1870, 90);
+        jLabel2.setBounds(30, 350, 1870, 90);
 
         jLabel4.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("na véspera de páscoa em 2017,pelos engenheiros arquitetos Márcia Regina e Wendel Ribeiro, com o ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(40, 290, 1870, 100);
+        jLabel4.setBounds(40, 220, 1870, 100);
 
         jLabel7.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
         jLabel7.setText("A linguagem de programação conta com técnicas avançadas das convenções universitárias de programação");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 510, 1880, 70);
+        jLabel7.setBounds(30, 440, 1880, 70);
 
         jLabel6.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
         jLabel6.setText("Programol - Language Oriented Programming Programol foi uma linguagem de programação desenvolvida ");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 240, 1880, 70);
+        jLabel6.setBounds(40, 170, 1880, 70);
 
         jLabel5.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("objetivo de terminar as pressas o trabalho especificado em uma das disciplinas do curso de ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 360, 1870, 90);
+        jLabel5.setBounds(30, 290, 1870, 90);
 
         jLabel8.setFont(new java.awt.Font("Comic Sans MS", 1, 24)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Orientada a gambiarra e outras técnicas utilizadas em projetos no qual os universitários não ");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(30, 580, 1880, 70);
+        jLabel8.setBounds(30, 510, 1880, 70);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/tela_principal/cb8e41a8a534de21fb11dc70a383e3cc.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 1290, 880);
+        jLabel1.setBounds(0, 0, 1370, 880);
 
-        setSize(new java.awt.Dimension(1302, 794));
+        setSize(new java.awt.Dimension(1316, 688));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Sobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Sobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Sobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Sobre.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Sobre().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
